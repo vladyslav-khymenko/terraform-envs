@@ -7,7 +7,7 @@ terraform {
 }
 
 module "web_server_cluster" {
-  source = "../../../modules/services/web-server-cluster"
+  source = "github.com/vladyslav-khymenko/terraform-modules//services/web-server-cluster?ref=v0.0.1"
 
   cluster_name = "web-servers-prod"
   db_remote_state_bucket = "terraform-up-n-running-state-07042023"
