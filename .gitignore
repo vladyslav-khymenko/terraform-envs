@@ -1,0 +1,9 @@
+node_modules
+
+# Infra
+.terraform
+*.tfstate
+*.tfstate.backup
+
+# Other
+nohup.out
