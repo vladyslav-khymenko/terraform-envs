@@ -7,7 +7,7 @@ terraform {
 }
 
 module "web_server_cluster" {
-  source = "github.com/vladyslav-khymenko/terraform-modules//services/web-server-cluster?ref=v0.0.1"
+  source = "github.com/vladyslav-khymenko/terraform-modules//services/web-server-cluster?ref=v0.0.5"
 
   cluster_name = "web-servers-prod"
   db_remote_state_bucket = "terraform-up-n-running-state-07042023"
@@ -16,6 +16,11 @@ module "web_server_cluster" {
   instance_type = "t2.micro"
   min_size      = 2
   max_size      = 10
+
+  custom_tags = {
+    Owner     = "wonderful-team"
+    ManagedBy = "terraform"
+  }
 }
 
 resource "aws_autoscaling_schedule" "scale_out_during_business_hours" {
