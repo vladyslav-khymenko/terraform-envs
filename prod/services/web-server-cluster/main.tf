@@ -7,7 +7,7 @@ terraform {
 }
 
 module "web_server_cluster" {
-  source = "github.com/vladyslav-khymenko/terraform-modules//services/web-server-cluster?ref=v0.0.9"
+  source = "github.com/vladyslav-khymenko/terraform-modules//services/web-server-cluster?ref=v0.0.10"
 
   ami         = "ami-0fb653ca2d3203ac1"
   server_text = "New server text from prod"
