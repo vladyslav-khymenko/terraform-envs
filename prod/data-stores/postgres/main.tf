@@ -1,12 +1,12 @@
-data "aws_secretsmanager_secret_version" "creds" {
-  secret_id = "db-creds"
-}
+# data "aws_secretsmanager_secret_version" "creds" {
+#   secret_id = "db-creds"
+# }
 
-locals {
-  db_creds = jsondecode(
-    data.aws_secretsmanager_secret_version.creds.secret_string
-  )
-}
+# locals {
+#   db_creds = jsondecode(
+#     data.aws_secretsmanager_secret_version.creds.secret_string
+#   )
+# }
 
 resource "aws_db_instance" "example" {
   identifier_prefix   = "terraform-up-and-running-pg-prod"
@@ -17,8 +17,10 @@ resource "aws_db_instance" "example" {
   skip_final_snapshot = true
   db_name             = "example_database_prod"
 
-  username = local.db_creds.username
-  password = local.db_creds.password
+  # username = local.db_creds.username
+  # password = local.db_creds.password
+  username = var.db_username
+  password = var.db_password
 }
 
 # Partial configuration. The other settings (e.g., bucket, region) will be
